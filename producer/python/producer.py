@@ -8,6 +8,7 @@ class KafkaProducer:
     def __init__(self):
         self.producer = Producer({
             'bootstrap.servers': self.broker,
+            'retries': 3,
             'socket.timeout.ms': 10000,
             'api.version.request': 'false',
             'broker.version.fallback': '0.9.0',
@@ -20,8 +21,8 @@ class KafkaProducer:
         if err is not None:
             print('Message delivery failed: {}'.format(err))
         else:
-            print('Message delivered to {} [{}]'.format(
-                msg.topic(), msg.partition()))
+            print('Message delivered to topic {} partiton:[{}] offset:[{}]'.format(
+                msg.topic(), msg.partition(), msg.offset()))
 
     def send_msg_async(self, msg):
         print("Send message asynchronously")
@@ -46,5 +47,5 @@ class KafkaProducer:
 
 #SENDING DATA TO KAFKA TOPIC
 kafka_producer = KafkaProducer()
-message = "Test Message-2"
+message = "Test Message-4"
 kafka_producer.send_msg_async(message)
