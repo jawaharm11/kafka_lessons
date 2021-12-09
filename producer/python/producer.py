@@ -46,5 +46,5 @@ class KafkaProducer:
 
 #SENDING DATA TO KAFKA TOPIC
 kafka_producer = KafkaProducer()
-message = "Hello this message will be sent to the kafka topic."
+message = "Test Message-2"
 kafka_producer.send_msg_async(message)
