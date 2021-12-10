@@ -1,0 +1,19 @@
+{
+  "namespace": "kafkalessons.com",
+  "type": "record",
+  "name": "User",
+  "fields": [
+    {
+      "name": "email",
+      "type": "string"
+    },
+    {
+      "name": "firstName",
+      "type": "string"
+    },
+    {
+      "name": "lastName",
+      "type": "string"
+    }
+  ]
+}
