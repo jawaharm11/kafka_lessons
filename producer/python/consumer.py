@@ -12,7 +12,7 @@ class KafkaConsumer:
             'group.id': self.group_id,
             'auto.offset.reset': 'earliest',
             'enable.auto.commit': 'true',
-            'max.poll.interval.ms': '86400000'
+            'max.poll.interval.ms': '86400000',
         }
 
         consumer = Consumer(consumer_config)

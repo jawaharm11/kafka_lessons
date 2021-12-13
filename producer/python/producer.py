@@ -10,10 +10,11 @@ class KafkaProducer:
             'bootstrap.servers': self.broker,
             'retries': 3,
             'socket.timeout.ms': 10000,
+            'linger.ms': 10,
+            'batch.size': 20000,
             'api.version.request': 'false',
             'broker.version.fallback': '0.9.0',
-        }
-        )
+        })
 
     def delivery_report(self, err, msg):
         """ Called once for each message produced to indicate delivery result.
@@ -35,17 +36,19 @@ class KafkaProducer:
 
     def send_msg_sync(self, msg):
         print("Send message synchronously")
-        self.producer.produce(
-            self.topic,
-            msg,
-            callback=lambda err, original_msg=msg: self.delivery_report(
-                err, original_msg
-            ),
-        )
+        for i in range(101,200):
+            msg = f"msg-{str(i)}"
+            self.producer.produce(
+                self.topic,
+                msg,
+                callback=lambda err, original_msg=msg: self.delivery_report(
+                    err, original_msg
+                ),
+            )
         self.producer.flush()
 
 
 #SENDING DATA TO KAFKA TOPIC
 kafka_producer = KafkaProducer()
-message = "Test Message-4"
-kafka_producer.send_msg_async(message)
+message = "Test Message"
+kafka_producer.send_msg_sync(message)
