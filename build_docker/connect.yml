@@ -1,0 +1,26 @@
+version: '3.7'
+
+networks:
+  default:
+    
+    name: kafka
+
+services:
+
+  connect:
+      networks:
+        default:
+      image: confluentinc/cp-kafka-connect:latest
+      ports:
+        - 8083:8083
+      environment:
+        CONNECT_GROUP_ID: test
+        CONNECT_CONFIG_STORAGE_TOPIC: connect-config
+        CONNECT_OFFSET_STORAGE_TOPIC: connect-offsets
+        CONNECT_STATUS_STORAGE_TOPIC: connect-status
+        CONNECT_BOOTSTRAP_SERVERS: kafka-1:9092,kafka-2:9092
+        CONNECT_KEY_CONVERTER: org.apache.kafka.connect.storage.StringConverter
+        CONNECT_VALUE_CONVERTER: org.apache.kafka.connect.json.JsonConverter
+        CONNECT_REST_ADVERTISED_HOST_NAME: connect
+        CONNECT_PLUGIN_PATH: /usr/share/java,/etc/kafka-connect/jars 
+  
