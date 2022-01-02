@@ -1,6 +1,6 @@
 # kafka_lessons
 
-** Instructions for deploying a PLAINTEXT Cluster **
+**Deploying a PLAINTEXT Cluster using docker**
 
 Default cluster build is located in docker-compose.yml file, builds 3 node zookeeper and 3 broker cluster with PLAINTEXT Listener.
 ```
@@ -10,7 +10,7 @@ Default cluster build is located in docker-compose.yml file, builds 3 node zooke
 ```
 
 
-** Instruction for deploying a SSL Cluster **
+**Deploying an SSL Cluster using docker**
 
 We will need to generate ssl certificates for deploying an SSL cluster. The script located under `scripts/gen_docker_ssl_certs.sh` will generate keystores for 3 brokers, a producer and a consumer client under the directory located at environment variable KAFKA_SSL_SECRETS_DIR.
 
@@ -21,7 +21,7 @@ We will need to generate ssl certificates for deploying an SSL cluster. The scri
 # docker-compose -f kafka-ssl.yml up
 ```
 
-** Connecting to an SSL Cluster and creating a topic **
+**Connecting to an SSL Cluster and creating a topic**
 
 Assuming that kafka binaries are downloaded locally on the laptop and ssl.properties has been updated with proper location of the client keystore and truststore
 
