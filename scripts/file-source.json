@@ -1,6 +1,7 @@
 {
     "name": "local-file-source",
     "config": {
+        "bootstrap.servers": "localhost:29092",
         "connector.class": "FileStreamSource",
         "tasks.max": 1,
         "file": "input-data.txt",
