@@ -97,7 +97,7 @@ services:
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka-3:9092,PLAINTEXT_HOST://localhost:39092
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
       
-  kafka-1:
+  kafka-4:
     image: confluentinc/cp-kafka:latest
     depends_on:
       - zk-1
@@ -120,6 +120,7 @@ services:
   #       - kafka-1
   #       - kafka-2
   #       - kafka-3
+  #       - kafka-4
 
   #     ports:
   #       - 8081:8081
